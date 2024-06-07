@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movies Details</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <h1>Movie Database</h1>
+      <ul>
+        <li><a href="index.html
+          ">Home</a></li>
+        <li><a href="movies.html">Movies</a></li>
+        <li><a href="report.html">Report</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Movie Details</h1>
+    <section id="movieDetails">
+
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 Movie Database. All rights reserved.</p>
+  </footer>
+
+
+
+
+
+
+
+
+  <script>
+    const movies = [{
+        id: "1",
+        title: "M.S. Dhoni: The Untold Story",
+        year: 2016,
+        genre: "Biographical, Drama, Sport",
+        director: "Neeraj Pandey",
+        cast: "Sushant Singh Rajput, Kiara Advani, Disha Patani",
+        plot: "The film chronicles the life of Indian cricketer Mahendra Singh Dhoni, focusing on his journey from a budding cricketer to becoming the captain of the Indian cricket team. It delves into his struggles, successes, personal life, and the untold aspects of his cricketing career."
+      },
+      {
+        id: "2",
+        title: "Srikanth Bolla",
+        year: 2024,
+        genre: "Biographical, Inspirational",
+        director: "Tushar Hiranandani",
+        cast: "Rajkumar Rao, Alya F, Sharad Kelkar",
+        plot: "Srikanth Bolla's life story is inspirational. Born blind in a rural village in Andhra Pradesh, he overcame numerous challenges to become the first international blind student at MIT. His journey showcases determination, resilience, and the power of education."
+      },
+      {
+        id: "3",
+        title: "Parmanu: The Story of Pokhran",
+        year: 2018,
+        genre: "Historical, Drama, Thriller",
+        director: "Abhishek Sharma",
+        cast: "John Abraham, Diana Penty, Boman Irani",
+        plot: "Based on true events, the movie depicts the story of India's nuclear tests at Pokhran in 1998. It highlights the efforts of the Indian Army and scientists who worked secretly to conduct the tests successfully."
+      },
+      {
+        id: "4",
+        title: "Rocketry: The Nambi Effect",
+        year: 2021,
+        genre: "Biographical, Drama",
+        director: "R. Madhavan",
+        cast: "R. Madhavan, Simran Bagga, Rajit Kapur",
+        plot: "The film tells the story of Nambi Narayanan, a former Indian scientist and aerospace engineer who was falsely accused of espionage and arrested. It explores his struggles, resilience, and eventual vindication."
+      },
+    ]
+
+
+    let url = new URL(window.location.href);
+    let urlId = url.searchParams.get("id");
+
+    let movieData = "";
+    for (let movie of movies) {
+      if (movie.id === urlId) {
+        movieData = movie;
+        console.log("Movie", movieData)
+      }
+    }
+
+    let showMovieDetails = document.getElementById("movieDetails");
+    if (movieData) {
+      showMovieDetails.innerHTML = `
+      <ul>
+        <li><strong>Title: </strong>${movieData.title}</li>
+        <li><strong>Release Year: </strong>${movieData.year}</li>
+        <li><strong>Genre: </strong>${movieData.genre}</li>
+        <li><strong>Director: </strong>${movieData.director}</li>
+        <li><strong>Cast: </strong>${movieData.cast}</li>
+        <li><strong>Plot: </strong>${movieData.plot}</li>
+
+      </ul>
+      `
+    } else {
+      showMovieDetails.innerHTML = `<h2>Movie Details not found!!</h2>`
+    }
+  </script>
+</body>
+
+</html>
